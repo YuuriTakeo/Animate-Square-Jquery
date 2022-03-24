@@ -1,0 +1,85 @@
+<!-- 
+Faculdade de Tecnologia de Lins - Prof Antonio Seabra 
+Programação de Dispositivos Móveis
+Curso: Análise e Desenvolvimento de Sistemas
+Prof. Felipe Maciel - felipe.maciel@fateclins.edu.br
+********************************************************************************************
+Sem alterar a estrutura HTML, implemente o necessário para que o exercício funcione como descrito abaixo. 
+Funcionamento:
+Ao clicar em [PLAY], deve-se criar uma animação no quadrado contido na página, abaixo segue a ordem das transições da animação.
+1º - height deve ser 300px e opacity deve ser 0.4
+2º - width deve ser 300px  e opacity deve ser 0.8
+3º - height deve ser 100px e opacity deve ser 0.4
+4º - width deve ser 100px  e opacity deve ser 0.8
+Para evitar que o usuário clique N vezes em [PLAY], além de desabilitado o botão, o texto dele deve ser alterado para [WAIT...] até que a animação conclua. Após a conclusão da animação o botão deve voltar ao seu estado de habilitado e com o texto [PLAY].
+-->
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <style>
+    #block {
+      background: pink;
+      height: 100px;
+      width: 100px;
+      position: absolute;
+      margin: 20px;
+    }
+
+    #play {
+      position: absolute;
+      top: 200px;
+      margin: 20px;
+    }
+  </style>
+  <title>Animate Square</title>
+</head>
+
+<body>
+  <div id="block"></div>
+  <button class="btn" id="play">Play</button>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
+      $('#play').click(function () {
+        $('#block').animate({
+          height:
+            "300px"
+        }, 500);
+        $('#block').animate({ opacity: 0.4 });
+        setTimeout(function () {
+          $('#play').text('Wait...');
+        }, 0);
+        setTimeout(function () {
+          $('#play').text('Play');
+        }, 3000);
+
+          $('#block').animate({
+            width:
+              "300px"
+          }, 500);
+          $('#block').animate({ opacity: 0.8 });
+
+          $('#block').animate({
+            height:
+              "100px"
+          }, 500);
+          $('#block').animate({ opacity: 0.4 });
+          $('#block').animate({
+            width:
+              "100px"
+          }, 500);
+          $('#block').animate({ opacity: 0.8 });
+
+
+        
+        $('#play').attr('disabled', 'disabled');
+      });
+    });
+  </script>
+</body>
+
+</html>
